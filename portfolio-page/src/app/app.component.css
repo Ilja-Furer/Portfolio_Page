@@ -1,0 +1,75 @@
+/* Overlay sliding animation */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    animation: slide-out 2s ease-in-out forwards;
+    z-index: 10;
+  }
+  
+  @keyframes slide-out {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+/* Name container - starts in the center */
+.name-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center perfectly */
+    text-align: center;
+    transition: all 1s ease-in-out; /* Smooth transition */
+    z-index: 5;
+  }
+  
+  /* Name styling */
+  h1.name {
+    margin: 0;
+    font-size: 4rem; /* Initial size for both names */
+    line-height: 1;
+    color: black;
+    display: flex;
+    gap: 0.5rem; /* Small gap between first and last names */
+    transition: all 1s ease-in-out; /* Smooth transition for resizing */
+  }
+  
+  /* First and last names start with same size */
+  .first-name,
+  .last-name {
+    font-size: inherit; /* Same size initially */
+    font-weight: bold;
+    transition: font-size 1s ease-in-out; /* Smooth transition for font sizes */
+  }
+  
+  /* Move to top-left styling */
+  .name-container.move-to-top {
+    top: 2rem; /* Moves to top */
+    left: 2rem; /* Moves to left */
+    transform: translate(0, 0); /* Remove centering */
+  }
+  
+  /* Resize the overall name smoothly */
+  .name-container.move-to-top h1 {
+    font-size: 2.5rem; /* Scale down the overall size */
+    color: black;
+  }
+  
+  /* Adjust sizes for first and last names during transition */
+  .name-container.move-to-top .first-name {
+    font-size: 3rem; /* Larger first name */
+    text-decoration: underline;
+  }
+  
+  .name-container.move-to-top .last-name {
+    font-size: 2rem; /* Smaller last name */
+    text-decoration: underline;
+  }
+  

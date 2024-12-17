@@ -29,7 +29,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "/Portfolio_Page/"
           },
           "configurations": {
             "production": {

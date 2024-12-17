@@ -21,55 +21,126 @@
   
 /* Name container - starts in the center */
 .name-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center perfectly */
-    text-align: center;
-    transition: all 1s ease-in-out; /* Smooth transition */
-    z-index: 5;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  z-index: 5;
+}
+
+/* Name styling */
+h1.name {
+  margin: 0;
+  font-size: 4rem; /* Initial size for both names */
+  line-height: 1;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Fade out during the transition */
+.name-container.fade-out {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95); /* Slight scale effect */
+}
+
+/* Move to top-left and reappear */
+.name-container.move-to-top {
+  top: 2rem;
+  left: 2rem;
+  transform: translate(0, 0);
+  opacity: 1; /* Reappears */
+}
+
+.name-container.move-to-top h1 {
+  font-size: 2.5rem; /* Smaller overall size */
+  color: black;
+}
+
+.name-container.move-to-top .first-name {
+  font-size: 3rem; /* Slightly larger first name */
+}
+
+.name-container.move-to-top .last-name {
+  font-size: 2rem; /* Slightly smaller last name */
+}
+
+/* Base styles for sliding elements */
+.slide-left,
+.slide-right-top,
+.slide-right-bottom,
+.slide-top-banner {
+  position: fixed;
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  background-color: white;
+  color: black;
+}
+
+/* Show state for all sliding elements */
+.slide-left.show,
+.slide-right-top.show,
+.slide-right-bottom.show,
+.slide-top-banner.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* Slide Left */
+.slide-left {
+  top: 5rem; /* Moved down to start under the banner */
+  left: 0;
+  width: 20vw;
+  height: calc(100vh - 5rem); /* Adjusted height to account for banner */
+  transform: translateX(-100%);
+}
+
+/* Slide Right Top */
+.slide-right-top {
+  top: 5rem; /* Moved down to start under the banner */
+  right: 0;
+  width: 20vw;
+  height: calc(50vh - 5rem); /* Adjusted height to account for banner */
+  transform: translateX(100%);
+}
+
+/* Slide Right Bottom */
+.slide-right-bottom {
+  bottom: 0;
+  right: 0;
+  width: 20vw;
+  height: 50vh;
+  transform: translateX(100%);
+}
+
+/* Top Banner */
+.slide-top-banner {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .slide-left,
+  .slide-right-top,
+  .slide-right-bottom {
+    width: 50vw;
   }
-  
-  /* Name styling */
-  h1.name {
-    margin: 0;
-    font-size: 4rem; /* Initial size for both names */
-    line-height: 1;
-    color: black;
-    display: flex;
-    gap: 0.5rem; /* Small gap between first and last names */
-    transition: all 1s ease-in-out; /* Smooth transition for resizing */
+}
+
+@media screen and (max-width: 480px) {
+  .slide-left,
+  .slide-right-top,
+  .slide-right-bottom {
+    width: 100vw;
   }
-  
-  /* First and last names start with same size */
-  .first-name,
-  .last-name {
-    font-size: inherit; /* Same size initially */
-    font-weight: bold;
-    transition: font-size 1s ease-in-out; /* Smooth transition for font sizes */
-  }
-  
-  /* Move to top-left styling */
-  .name-container.move-to-top {
-    top: 2rem; /* Moves to top */
-    left: 2rem; /* Moves to left */
-    transform: translate(0, 0); /* Remove centering */
-  }
-  
-  /* Resize the overall name smoothly */
-  .name-container.move-to-top h1 {
-    font-size: 2.5rem; /* Scale down the overall size */
-    color: black;
-  }
-  
-  /* Adjust sizes for first and last names during transition */
-  .name-container.move-to-top .first-name {
-    font-size: 3rem; /* Larger first name */
-    text-decoration: underline;
-  }
-  
-  .name-container.move-to-top .last-name {
-    font-size: 2rem; /* Smaller last name */
-    text-decoration: underline;
-  }
-  
+}

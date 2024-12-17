@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,13 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  firstName = 'ILJA ';
-  lastName = 'FURER';
-  animationDone = false;
+  firstName = 'Ilja';
+  lastName = 'Furer';
+  fadeOut = false;
+  moveToTop = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
+    console.log('Animation starts');
     setTimeout(() => {
-      this.animationDone = true;
+      this.fadeOut = true;
+      console.log('Name faded out');
+
+      setTimeout(() => {
+        this.moveToTop = true;
+        console.log('moveToTop set to true:', this.moveToTop);
+        this.cdr.detectChanges(); // Force update if needed
+      }, 500);
     }, 2000);
   }
 }

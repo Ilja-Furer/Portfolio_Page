@@ -1,7 +1,45 @@
 <div class="overlay"></div>
-<div class="name-container" [class.move-to-top]="animationDone">
+
+<!-- Centered Name -->
+<div
+  class="name-container"
+  [class.fade-out]="fadeOut"
+  [class.move-to-top]="moveToTop"
+>
   <h1 class="name">
     <span class="first-name">{{ firstName }}</span>
     <span class="last-name">{{ lastName }}</span>
   </h1>
+</div>
+
+<!-- Sliding Divs -->
+<div class="slide-left" [class.show]="moveToTop">
+  <div class="content">
+    <h2>About Me</h2>
+    <p>Welcome to my portfolio! I'm Ilja Furer, a Requirements Engineer and a Student</p>
+  </div>
+</div>
+
+<div class="slide-right-top" [class.show]="moveToTop">
+  <div class="content">
+    <h2>Skills</h2>
+    <ul>
+      <li>too many to list</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide-right-bottom" [class.show]="moveToTop">
+  <div class="content">
+    <h2>Projects</h2>
+    <p>Check out some of my recent work showcasing modern web applications.</p>
+    <button class="projects-btn">View Projects</button>
+  </div>
+</div>
+
+<div class="slide-top-banner" [class.show]="moveToTop">
+  <div class="banner-content">
+    <h3>Welcome to My Portfolio</h3>
+    <button class="contact-btn">Contact Me</button>
+  </div>
 </div>

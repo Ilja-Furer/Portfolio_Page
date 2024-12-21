@@ -110,6 +110,7 @@ h1.name {
   height: calc(100vh - 5rem);
   transform: translateX(-100%);
   padding: 2vw;
+  border-right: thick solid black;
 }
 
 /* Right Top Panel */

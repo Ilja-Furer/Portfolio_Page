@@ -14,14 +14,11 @@ export class AppComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    console.log('Animation starts');
     setTimeout(() => {
       this.fadeOut = true;
-      console.log('Name faded out');
 
       setTimeout(() => {
         this.moveToTop = true;
-        console.log('moveToTop set to true:', this.moveToTop);
         this.cdr.detectChanges(); // Force update if needed
       }, 500);
     }, 2000);

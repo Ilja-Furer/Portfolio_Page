@@ -13,32 +13,37 @@
 </div>
 
 <!-- Sliding Divs -->
-<div class="slide-left" [class.show]="moveToTop">
-  <div class="content">
-    <h2>About Me</h2>
-    <p>Welcome to my portfolio! I'm Ilja Furer, a Requirements Engineer and a Student</p>
-  </div>
-</div>
+<div class="container">
+  <div class="slide-left" [class.show]="moveToTop">
+    <div class="content">
+      <h1 class = "left-heading">About Me</h1>
+      <p>
+        Hey, ich heisse Ilja. <br>
+        a Requirements Engineer<br>
 
-<div class="slide-right-top" [class.show]="moveToTop">
-  <div class="content">
-    <h2>Skills</h2>
-    <ul>
-      <li>too many to list</li>
-    </ul>
+      </p>
+    </div>
   </div>
-</div>
-
-<div class="slide-right-bottom" [class.show]="moveToTop">
-  <div class="content">
-    <h2>Projects</h2>
-    <p>Check out some of my recent work showcasing modern web applications.</p>
-    <button class="projects-btn">View Projects</button>
+  <div class="slide-right-top" [class.show]="moveToTop">
+    <div class="content">
+      <h2>Hobbies</h2>
+      <ul>
+        <li>too many to list</li>
+      </ul>
+    </div>
   </div>
-</div>
-
-<div class="slide-top-banner" [class.show]="moveToTop">
-  <div class="banner-content">
-    <h3>Welcome to My Portfolio</h3>
+  <div class="slide-right-bottom" [class.show]="moveToTop">
+    <div class="content">
+      <h2>Projects</h2>
+      <p>Check out some of my recent work showcasing modern web applications.</p>
+      <button class="projects-btn">View Projects</button>
+    </div>
+  </div>
+  <div class="slide-top-banner" [class.show]="moveToTop">
+    <div>
+      <a href="mailto:iljafurer@pm.me" class = "email-button">
+        Let's Talk
+      </a>
+    </div>
   </div>
 </div>

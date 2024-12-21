@@ -69,51 +69,24 @@ h1.name {
 }
 
 /* Base styles for sliding elements */
-.slide-left,
-.slide-right-top,
-.slide-right-bottom,
-.slide-top-banner {
-  position: fixed;
-  opacity: 0;
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-  background-color: white;
-  color: black;
-}
-
-/* Show state for all sliding elements */
 .slide-left.show,
 .slide-right-top.show,
 .slide-right-bottom.show,
 .slide-top-banner.show {
   opacity: 1;
   transform: none;
+  outline: 5px dashed green;
 }
 
-/* Slide Left */
-.slide-left {
-  top: 5rem; /* Moved down to start under the banner */
-  left: 0;
-  width: 20vw;
-  height: calc(100vh - 5rem); /* Adjusted height to account for banner */
-  transform: translateX(-100%);
-}
-
-/* Slide Right Top */
-.slide-right-top {
-  top: 5rem; /* Moved down to start under the banner */
-  right: 0;
-  width: 20vw;
-  height: calc(50vh - 5rem); /* Adjusted height to account for banner */
-  transform: translateX(100%);
-}
-
-/* Slide Right Bottom */
-.slide-right-bottom {
-  bottom: 0;
-  right: 0;
-  width: 20vw;
-  height: 50vh;
-  transform: translateX(100%);
+/* Common styles for positioning */
+.slide-left,
+.slide-right-top,
+.slide-right-bottom,
+.slide-top-banner {
+  position: absolute;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+  box-sizing: border-box;
 }
 
 /* Top Banner */
@@ -126,6 +99,37 @@ h1.name {
   align-items: center;
   justify-content: center;
   transform: translateY(-100%);
+  z-index: 10;
+}
+
+/* Left Panel */
+.slide-left {
+  top: 5rem;
+  left: 0;
+  width: 50%;
+  height: calc(100vh - 5rem);
+  transform: translateX(-100%);
+  padding: 2vw;
+}
+
+/* Right Top Panel */
+.slide-right-top {
+  top: 5rem;
+  right: 0;
+  width: 50%;
+  height: calc((100vh - 5rem) / 2); /* Divide remaining height by 2 */
+  transform: translateX(100%);
+  padding: 2vw;
+}
+
+/* Right Bottom Panel */
+.slide-right-bottom {
+  top: calc(5rem + (100vh - 5rem) / 2); /* Position it right after top panel */
+  right: 0;
+  width: 50%;
+  height: calc((100vh - 5rem) / 2); /* Divide remaining height by 2 */
+  transform: translateX(100%);
+  padding: 2vw;
 }
 
 /* Responsive adjustments */
@@ -143,4 +147,31 @@ h1.name {
   .slide-right-bottom {
     width: 100vw;
   }
+}
+
+/* Left aligned headings*/
+.left-heading{
+  font-weight: bold;
+}
+
+/* email button styling*/
+.email-button{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  text-decoration: none;
+  background-color: rgb(47, 79, 79);  /* Primary button color */
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email-button:hover {
+  background-color: rgb(64, 107, 107); /* Highlight on hover*/
 }

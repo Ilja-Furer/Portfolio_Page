@@ -1,44 +1,78 @@
 <div class="overlay"></div>
 
-<!-- Centered Name -->
-<div
-  class="name-container"
-  [class.fade-out]="fadeOut"
-  [class.move-to-top]="moveToTop"
->
+<!-- Name in Center During Intro -->
+<div class="name-container" 
+     [class.fade-out]="fadeOut" 
+     [class.move-to-top]="moveToTop">
   <h1 class="name">
     <span class="first-name">{{ firstName }}</span>
     <span class="last-name">{{ lastName }}</span>
   </h1>
 </div>
 
-<!-- Sliding Divs -->
-<div class="slide-left" [class.show]="moveToTop">
-  <div class="content">
-    <h2>About Me</h2>
-    <p>Welcome to my portfolio! I'm Ilja Furer, a Requirements Engineer and a Student</p>
-  </div>
-</div>
-
-<div class="slide-right-top" [class.show]="moveToTop">
-  <div class="content">
-    <h2>Skills</h2>
-    <ul>
-      <li>too many to list</li>
-    </ul>
-  </div>
-</div>
-
-<div class="slide-right-bottom" [class.show]="moveToTop">
-  <div class="content">
-    <h2>Projects</h2>
-    <p>Check out some of my recent work showcasing modern web applications.</p>
-    <button class="projects-btn">View Projects</button>
-  </div>
-</div>
-
+<!-- Top Banner (Always Visible) -->
 <div class="slide-top-banner" [class.show]="moveToTop">
   <div class="banner-content">
-    <h3>Welcome to My Portfolio</h3>
+    <div class="name-container move-to-top">
+      <h1 class="name">
+        <span class="first-name">{{ firstName }}</span>
+        <span class="last-name">{{ lastName }}</span>
+      </h1>
+    </div>
+    <a href="mailto:iljafurer@pm.me" class="email-button">
+      Let's Talk
+    </a>
+  </div>
+</div>
+
+<!-- Sliding Panels (Hidden When Hobbies or Projects Section is Active) -->
+<div class="container" *ngIf="!showHobbies && !showProjects">
+  <div class="slide-left" [class.show]="moveToTop">
+    <div class="content">
+      <h1 class="left-heading">About Me</h1>
+      <p>
+        Born in the year 2000 in Thun I grew up living all over Switzerland and even outside it for a while.
+        I've learned a lot in my short time here and am always striving to be the best version of myself. 
+        These are a few highlights of my education so far.<br />
+      </p>
+    </div>
+  </div>
+
+  <div class="slide-right-top" 
+       [class.show]="moveToTop"
+       (click)="onSlideRightTopClick()">
+    <div class="content">
+      <h2>Hobbies</h2>
+      <ul>
+        <li>too many to list</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide-right-bottom" 
+       [class.show]="moveToTop"
+       (click)="onSlideRightBottomClick()">
+    <div class="content">
+      <h2>Projects</h2>
+      <p>Check out some of my recent work showcasing modern web applications.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Hobbies Section -->
+<div class="container-hobbies" *ngIf="showHobbies">
+  <div class="content">
+    <h2>My Hobbies</h2>
+    <p>This is where you can expand on your hobbies in detail.</p>
+    <button (click)="closeHobbies()">Close</button>
+  </div>
+</div>
+
+<!-- Projects Section -->
+<div class="container-projects" *ngIf="showProjects">
+  <div class="content">
+    <h2>My Projects</h2>
+    <p>Details about various projects will be listed here.</p>
+    <button (click)="closeProjects()">Close</button>
   </div>
 </div>

@@ -109,6 +109,23 @@ h1.name {
   outline: thick solid gray;
 }
 
+.slide-right-top {
+  .slide-right-top {
+    top: 5rem;
+    right: 0;
+    width: 30%;
+    height: calc((100vh - 5rem) / 2);
+    transform: translateX(100%);
+    padding: 2vw;
+    cursor: pointer;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out, background-color 0.3s ease;
+    
+    /* Make this container display flex in a column direction */
+    display: flex;
+  }
+  
+}
+
 /* Top Banner */
 .slide-top-banner {
   top: 0;
@@ -144,7 +161,7 @@ h1.name {
 .slide-left {
   top: 5rem;
   left: 0;
-  width: 50%;
+  width: 70%;
   height: calc(100vh - 5rem);
   transform: translateX(-100%);
   padding: 2vw;
@@ -154,7 +171,7 @@ h1.name {
 .slide-right-top {
   top: 5rem;
   right: 0;
-  width: 50%;
+  width: 30%;
   height: calc((100vh - 5rem) / 2);
   transform: translateX(100%);
   padding: 2vw;
@@ -215,7 +232,7 @@ h1.name {
 .slide-right-bottom {
   top: calc(5rem + (100vh - 5rem) / 2);
   right: 0;
-  width: 50%;
+  width: 30%;
   height: calc((100vh - 5rem) / 2);
   transform: translateX(100%);
   padding: 2vw;

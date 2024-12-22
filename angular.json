@@ -20,17 +20,26 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
+
+            /* 
+             * IMPORTANT: Include "src/assets" so that the assets folder 
+             * is copied over to "dist/portfolio-page/assets" on build. 
+             * The public folder is also included here if you need it. 
+             */
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [
               "src/styles.css"
             ],
             "scripts": [],
-            "baseHref": "/Portfolio_Page/"
+            "baseHref": "/"
           },
           "configurations": {
             "production": {
@@ -80,6 +89,8 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"

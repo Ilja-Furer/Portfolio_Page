@@ -1,13 +1,16 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RandomImageComponent } from './random-image/random-image.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RandomImageComponent],  // Add RandomImageComponent here
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
+
 export class AppComponent implements OnInit, AfterViewInit {
   firstName: string = 'ILJA';
   lastName: string = 'FURER';

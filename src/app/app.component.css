@@ -1,50 +1,66 @@
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
 /* Overlay sliding animation */
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    animation: slide-out 2s ease-in-out forwards;
-    z-index: 10;
-  }
-  
-  @keyframes slide-out {
-    0% {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  animation: slide-out 2s ease-in-out forwards;
+  z-index: 10;
+}
+
+@keyframes slide-out {
+  0% {
       transform: translateX(0);
-    }
-    100% {
-      transform: translateX(100%);
-    }
   }
-  
+  100% {
+      transform: translateX(100%);
+  }
+}
+
 /* Name container - starts in the center */
 .name-container {
+  text-align: center;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  z-index: 5;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-/* Name styling */
 h1.name {
   margin: 0;
-  font-size: 4rem; /* Initial size for both names */
   line-height: 1;
-  color: black;
   display: flex;
+  justify-content: center;
+  align-items: flex-end;  /* Aligns the baseline of the names */
   gap: 0.5rem;
-  transition: all 0.5s ease-in-out;
+}
+
+/* First Name - Larger and Lower */
+.first-name {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;  /* Prevents extra spacing */
+}
+
+/* Last Name - Smaller and Slightly Raised */
+.last-name {
+  font-size: 2.5rem;
+  font-weight: 500;
+  transform: translateY(-10%);  /* Raises the last name slightly */
 }
 
 /* Fade out during the transition */
 .name-container.fade-out {
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.95); /* Slight scale effect */
+  transform: translate(-50%, -50%) scale(0.95);
 }
 
 /* Move to top-left and reappear */
@@ -52,20 +68,22 @@ h1.name {
   top: 2rem;
   left: 2rem;
   transform: translate(0, 0);
-  opacity: 1; /* Reappears */
+  opacity: 1;
 }
 
-.name-container.move-to-top h1 {
-  font-size: 2.5rem; /* Smaller overall size */
-  color: black;
+/* Styling for the name once it moves to the banner */
+.name-container.move-to-top h1.name {
+  color: white;
 }
 
+/* Adjust the size and elevation if needed */
 .name-container.move-to-top .first-name {
-  font-size: 3rem; /* Slightly larger first name */
+  font-size: 2rem;  /* Adjust the first name size in the banner */
 }
 
 .name-container.move-to-top .last-name {
-  font-size: 2rem; /* Slightly smaller last name */
+  font-size: 1.5rem;  /* Adjust the last name size in the banner */
+  transform: translateY(-10%);  /* Slight elevation */
 }
 
 /* Base styles for sliding elements */
@@ -75,7 +93,8 @@ h1.name {
 .slide-top-banner.show {
   opacity: 1;
   transform: none;
-  outline: 5px dashed green;
+  background-color: rgba(28,28,28);
+  color: white;
 }
 
 /* Common styles for positioning */
@@ -87,19 +106,38 @@ h1.name {
   transition: transform 0.5s ease-out, opacity 0.5s ease-out;
   opacity: 0;
   box-sizing: border-box;
+  outline: thick solid gray;
 }
 
 /* Top Banner */
 .slide-top-banner {
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transform: translateY(-100%);
+  justify-content: space-between; /* Separate name and email button */
+  position: fixed; /* Fix banner to the top */
   z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Separation shadow */
+  padding: 0 1rem; /* Add padding for spacing */
+}
+
+/* Adjust the name styling inside the banner */
+.name-container.move-to-top h1 {
+  font-size: 1.5rem; /* Resize to fit in the banner */
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 /* Left Panel */
@@ -110,7 +148,6 @@ h1.name {
   height: calc(100vh - 5rem);
   transform: translateX(-100%);
   padding: 2vw;
-  border-right: thick solid black;
 }
 
 /* Right Top Panel */
@@ -118,17 +155,68 @@ h1.name {
   top: 5rem;
   right: 0;
   width: 50%;
-  height: calc((100vh - 5rem) / 2); /* Divide remaining height by 2 */
+  height: calc((100vh - 5rem) / 2);
   transform: translateX(100%);
   padding: 2vw;
+  cursor: pointer;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out, background-color 0.3s ease;
+}
+
+.slide-right-top:hover, 
+.slide-right-bottom:hover 
+ {
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.container-hobbies,
+.container-projects {
+  position: fixed;
+  top: 5rem;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 5rem);
+  background-color: rgba(28, 28, 28);
+  overflow-y: auto;
+  z-index: 1;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-out;
+  color: white;
+  margin-top: 0;
+  padding: 2rem;
+}
+
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Add styles for the content inside container-hobbies */
+.container-hobbies .content,
+.container-projects .content  {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Ensure pointer events work */
+.slide-right-top.show {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
 /* Right Bottom Panel */
 .slide-right-bottom {
-  top: calc(5rem + (100vh - 5rem) / 2); /* Position it right after top panel */
+  top: calc(5rem + (100vh - 5rem) / 2);
   right: 0;
   width: 50%;
-  height: calc((100vh - 5rem) / 2); /* Divide remaining height by 2 */
+  height: calc((100vh - 5rem) / 2);
   transform: translateX(100%);
   padding: 2vw;
 }
@@ -138,7 +226,7 @@ h1.name {
   .slide-left,
   .slide-right-top,
   .slide-right-bottom {
-    width: 50vw;
+      width: 50vw;
   }
 }
 
@@ -146,22 +234,22 @@ h1.name {
   .slide-left,
   .slide-right-top,
   .slide-right-bottom {
-    width: 100vw;
+      width: 100vw;
   }
 }
 
-/* Left aligned headings*/
-.left-heading{
+/* Left aligned headings */
+.left-heading {
   font-weight: bold;
 }
 
-/* email button styling*/
-.email-button{
+/* Email button styling */
+.email-button {
   position: absolute;
   top: 15px;
   right: 15px;
   text-decoration: none;
-  background-color: rgb(47, 79, 79);  /* Primary button color */
+  background-color: rgb(47, 79, 79);
   color: white;
   padding: 12px 24px;
   border-radius: 6px;
@@ -174,5 +262,20 @@ h1.name {
 }
 
 .email-button:hover {
-  background-color: rgb(64, 107, 107); /* Highlight on hover*/
+  background-color: rgb(64, 107, 107);
+}
+
+/* Scroll padding to avoid content hiding under the fixed banner */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  scroll-padding-top: 5rem;
+  background-color: black;
+  color: white;
+}
+
+.container {
+  background-color: black;  /* Ensures seamless transitions */
 }

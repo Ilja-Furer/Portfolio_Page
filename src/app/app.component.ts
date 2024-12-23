@@ -1,12 +1,13 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RandomImageComponent } from './random-image/random-image.component';
+import { AareService } from './aare.service';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RandomImageComponent],  // Add RandomImageComponent here
+  imports: [CommonModule, RandomImageComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   showHobbies: boolean = false;  
   showProjects: boolean = false;  
   appLoaded: boolean = false;  // Add loading state
+  aareGuruService = inject(AareService)
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.cdr.detectChanges();
       }, 500);
     }, 2000);
+    this.aareGuruService.getAareData().subscribe(aareData => console.log(aareData))
   }
 
   ngAfterViewInit() {

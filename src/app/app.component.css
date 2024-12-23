@@ -201,6 +201,7 @@ h1.name {
   padding: 2rem;
 }
 
+
 @keyframes slideIn {
   from {
       opacity: 0;
@@ -287,12 +288,13 @@ h1.name {
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;  /* Allow scrolling if content exceeds viewport height */
   overflow-x: hidden;
   scroll-padding-top: 5rem;
   background-color: black;
   color: white;
 }
+
 
 .container {
   background-color: black;  /* Ensures seamless transitions */
@@ -365,3 +367,6 @@ html, body {
   }
 }
 
+.headings{
+
+}

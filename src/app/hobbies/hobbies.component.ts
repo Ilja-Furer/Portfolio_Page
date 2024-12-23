@@ -14,6 +14,8 @@ export class HobbiesComponent implements OnInit {
   
   ngOnInit(): void {
     this.aareGuruService.getAareData()
-      .subscribe(fromApi => this.currentAareGuru = fromApi);
+      .subscribe(fromApi => {
+        this.currentAareGuru = fromApi;
+      });
   }
 }

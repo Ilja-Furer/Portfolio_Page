@@ -1,7 +1,11 @@
 export interface AareGuruResponse {
-    timestamp: number,
-    temperature: number,
+    aare: AareResponse
     weather: WeatherResponse
+}
+
+export interface AareResponse {
+    timestring: string,
+    temperature: number,
 }
 
 export interface WeatherResponse {

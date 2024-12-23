@@ -65,18 +65,69 @@
 
 <!-- Hobbies Section -->
 <div class="container-hobbies" *ngIf="showHobbies">
-  <div class="content">
-    <h2>My Hobbies</h2>
-    <p>This is where you can expand on your hobbies in detail.</p>
-    <button (click)="closeHobbies()">Back</button>
+  <div class="content hobbies-flex">
+    <div class="text-content">
+      <h1 class="headings">Mountainbiking</h1>
+      <p class="paragraph-content">
+        I was able to borrow a bike from a friend to give it a try. Even though that one was old, 
+        heavy, and way too small, I immediately fell in love with the sport. 
+        Now I've been riding bikes for over six years, made new friends because of it, and convinced 
+        old friends to give it a try.
+        I started out with a cross-country bike from Giant but quickly realised 
+        that I much prefer gravity riding. So, I sold my Giant and bought two new bikes: an Enduro 
+        and a Downhill bike.
+        I started riding almost daily and progressing fast. 
+        These days I don’t have that much free time anymore, but I still try to get out as often as possible.
+        <br/>
+        The picture here is our friend group's first time riding in Champéry.
+      </p>
+      
+      <div>
+        <p class="paragraph-content">
+          Shortly after I started riding, I discovered the professional Downhill scene. 
+          Governed by the Union Cycliste Internationale (International Cycling Union), the best riders 
+          compete in 10 races across the globe to determine the fastest. Additionally, the top riders from each 
+          country are selected for the World Championship—a one-race, winner-takes-all competition.
+      </p>
+      
+      <p>
+          This year, Switzerland will host two events: a World Series round in Lenzerheide and the World Championships 
+          in Valais. The legendary Downhill track in Champéry will return to the spotlight after a 15-year hiatus, 
+          welcoming the world's best riders. I am immensely looking forward to both events.
+        </p>
+      </div>
+    </div>
+    
+    <div class="image-content">
+      <img src="assets/images/morzine.jpg" alt="Mountainbiking in Champéry" />
+    </div>
+    
+    <h1 class="headings">Swimming</h1>
+      <p class="paragraph-content">
+        Having lived in multiple different locations, one thing that keeps pulling me back to Bern 
+        is the Aare. The Aare snakes down from the Bernese Highlands to Bern and finally ends in lake
+        Bienne. In a way connecting where I was born to where I choose to live now. If I'm not busy or
+        on my bike you'll often find me somewhere close to the riverbed enjoying nature, grilling or getting
+        ready to take a refreshing plunge. The current Aare temperature in Bern is updated live on the left.
+       </p>
+
+    <h1 class="headings">Music</h1>
+      <p class="paragraph-content">
+        
+
+      </p>
+
+    <button class="back-button" (click)="closeHobbies()">Back</button>
   </div>
 </div>
+
+
 
 <!-- Projects Section -->
 <div class="container-projects" *ngIf="showProjects">
   <div class="content">
     <h2>My Projects</h2>
     <p>Details about various projects will be listed here.</p>
-    <button (click)="closeProjects()">Back</button>
+    <a href="javascript:void(0)" class="back-button" (click)="closeProjects()">Back</a>
   </div>
 </div>

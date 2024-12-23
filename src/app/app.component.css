@@ -218,6 +218,8 @@ h1.name {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  position: relative;
+  padding-bottom: 80px;
 }
 
 /* Ensure pointer events work */
@@ -305,3 +307,61 @@ html, body {
   background-color: black;
   z-index: 100;
 }
+
+.paragraph-content{
+  font-size: large;
+}
+
+.back-button {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  background-color: rgb(47, 79, 79);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hobbies-flex {
+  display: flex;
+  align-items: flex-start;  /* Align items to the top */
+  gap: 2rem;               /* Space between text and image */
+  flex-wrap: wrap;         /* Allow wrapping on smaller screens */
+  justify-content: space-between; /* Ensures space between text and image */
+}
+
+.text-content {
+  flex: 1;                /* Text takes up remaining space */
+  min-width: 300px;
+}
+
+.image-content {
+  flex: 0 0 auto;         /* Image does not grow or shrink */
+}
+
+.image-content img {
+  max-width: 400px;       /* Limit image width */
+  height: auto;
+  border-radius: 8px;     /* Optional - rounded corners */
+}
+
+/* Responsive - stack on small screens */
+@media screen and (max-width: 768px) {
+  .hobbies-flex {
+    flex-direction: column;  /* Stack image below text on smaller screens */
+    align-items: center;
+  }
+
+  .image-content img {
+    max-width: 90%;         /* Image scales responsively */
+  }
+}
+

@@ -6,6 +6,7 @@ export interface AareGuruResponse {
 export interface AareResponse {
     timestring: string,
     temperature: number,
+    temperature_text: string
 }
 
 export interface WeatherResponse {

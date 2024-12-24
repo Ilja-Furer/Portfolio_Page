@@ -13,10 +13,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   router = inject(Router);
   
   @ViewChild('overlay')
-  overlay!: ElementRef;
+  overlay?: ElementRef;
 
   @ViewChild('slider')
-  slider!: ElementRef;
+  slider?: ElementRef;
 
   disabled = this.isRoot();
   playAnimation = this.isRoot();
@@ -31,13 +31,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.overlay.nativeElement.addEventListener('animationend', () => {
-      this.playAnimation = false;
-    });
+    if (this.overlay && this.slider) {
+      this.overlay.nativeElement.addEventListener('animationend', () => {
+        this.playAnimation = false;
+      });
 
-    this.slider.nativeElement.addEventListener('animationend', () => {
+      this.slider.nativeElement.addEventListener('animationend', () => {
+        this.showContent = true;
+      })
+    } else {
+      this.playAnimation = false;
       this.showContent = true;
-    })
+    }
   }
 
   navigateBack(): void {

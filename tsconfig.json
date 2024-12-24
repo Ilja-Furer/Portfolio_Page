@@ -16,17 +16,8 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022",
-    "baseUrl": "./",        // Ensures paths are relative to the root folder
-    "rootDir": "src",       // The root directory of your TypeScript files
-    "outDir": "./dist/out", // Output directory for compiled files
-    "paths": {
-      "@app/*": ["src/app/*"], // Example alias for app folder
-      "@assets/*": ["src/assets/*"]
-    }
+    "module": "ES2022"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

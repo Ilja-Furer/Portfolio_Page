@@ -1,8 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-    background-color: black; /* Base background to prevent flash */
-    color: white;            /* Ensure readable text */
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }

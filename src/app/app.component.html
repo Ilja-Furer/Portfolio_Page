@@ -1,5 +1,5 @@
 @if (playAnimation) {
-  <div id="slider" class="overlay">
+  <div #slider id="slider" class="overlay">
   </div>
 
   <div #overlay id="overlay" class="d-flex overlay justify-content-center align-items-center">
@@ -7,20 +7,22 @@
   </div>
 }
 
-<div class="container">
-  <header class="d-flex flex-wrap py-3 justify-content-center">
-    <h1 class="d-flex me-auto">Ilja Furer</h1>
+@if (showContent) {
+  <div class="container">
+    <header class="d-flex flex-wrap py-3 justify-content-center">
+      <h1 class="d-flex me-auto">Ilja Furer</h1>
 
-    <ul class="nav nav-pills align-items-center">
-      <li class="nav-item">
-        <a href="mailto:iljafurer@pm.me" class="nav-link active">Talk to me!</a>
-      </li>
-    </ul>
-  </header>
+      <ul class="nav nav-pills align-items-center">
+        <li class="nav-item">
+          <a href="mailto:iljafurer@pm.me" class="nav-link active">Talk to me!</a>
+        </li>
+      </ul>
+    </header>
 
-  <router-outlet />
+    <router-outlet />
 
-  <button [disabled]="disabled" class="position-absolute bottom-0 end-0 me-4 mb-2 btn btn-dark" (click)="navigateBack()">
-    <img src="assets/images/back.svg" />
-  </button>
-</div>
+    <button [disabled]="disabled" class="float-end mb-2 btn btn-dark" (click)="navigateBack()">
+      <img src="assets/images/back.svg" />
+    </button>
+  </div>
+}

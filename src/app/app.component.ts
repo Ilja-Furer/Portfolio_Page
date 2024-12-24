@@ -15,8 +15,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('overlay')
   overlay!: ElementRef;
 
+  @ViewChild('slider')
+  slider!: ElementRef;
+
   disabled = this.isRoot();
   playAnimation = this.isRoot();
+  showContent = false;
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
@@ -30,6 +34,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.overlay.nativeElement.addEventListener('animationend', () => {
       this.playAnimation = false;
     });
+
+    this.slider.nativeElement.addEventListener('animationend', () => {
+      this.showContent = true;
+    })
   }
 
   navigateBack(): void {
